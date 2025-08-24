@@ -1,0 +1,42 @@
+.violations {
+  padding: 40px;
+  max-width: 700px;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.violation-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #ffcccc, #ff9999);
+  border: 1px solid #f44336;
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: 0 6px 15px rgba(244,67,54,0.2);
+  transition: transform 0.2s ease;
+}
+
+.violation-card:hover {
+  transform: scale(1.02);
+}
+
+.violation-card .emoji {
+  font-size: 30px;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+}

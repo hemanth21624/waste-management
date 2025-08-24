@@ -1,0 +1,42 @@
+.home {
+  text-align: center;
+  padding: 50px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.hero {
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  color: white;
+  padding: 80px 20px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero:hover {
+  transform: scale(1.02);
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.95);
+}
