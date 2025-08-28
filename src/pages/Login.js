@@ -1,15 +1,9 @@
-// src/pages/Login.js
+
 import React, { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 
-/**
- * Demo auth storage keys:
- * - wm_users: array of { id, email, password, name }
- * - wm_user: active auth (AuthContext also persists)
- *
- * NOTE: This is a front-end demo only. Do NOT use this for production auth.
- */
+
 
 function readUsers() {
   try {
@@ -34,35 +28,35 @@ export default function Login() {
   const location = useLocation();
   const from = (location.state && location.state.from) || { pathname: "/" };
 
-  const [mode, setMode] = useState("signin"); // signin | signup
+  const [mode, setMode] = useState("signin");
   const [loading, setLoading] = useState(false);
   const [remember, setRemember] = useState(true);
 
-  // Sign in fields
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPwd, setShowPwd] = useState(false);
 
-  // Sign up fields
+  
   const [suName, setSuName] = useState("");
   const [suEmail, setSuEmail] = useState("");
   const [suPassword, setSuPassword] = useState("");
   const [suConfirm, setSuConfirm] = useState("");
 
-  // UI messages
+  
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
 
-  // Forgot password
+  
   const [forgotEmail, setForgotEmail] = useState("");
   const [forgotMsg, setForgotMsg] = useState("");
 
-  // Helper: simple email validation
+  
   function validEmail(e) {
     return /\S+@\S+\.\S+/.test(e || "");
   }
 
-  // ---------- Sign In ----------
+  
   async function onSignIn(e) {
     e.preventDefault();
     setError("");
@@ -77,7 +71,7 @@ export default function Login() {
     }
 
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 500)); // simulate latency
+    await new Promise((r) => setTimeout(r, 500));
 
     const user = findUserByEmail(email);
     if (!user || user.password !== password) {
@@ -86,13 +80,13 @@ export default function Login() {
       return;
     }
 
-    // success -> call AuthContext.login with display name and remember option
+    
     await login({ username: user.name || user.email.split("@")[0], remember });
     setLoading(false);
     navigate(from, { replace: true });
   }
 
-  // ---------- Sign Up ----------
+  
   async function onSignUp(e) {
     e.preventDefault();
     setError("");
@@ -120,7 +114,7 @@ export default function Login() {
       return;
     }
 
-    // create user
+    
     setLoading(true);
     await new Promise((r) => setTimeout(r, 600));
     const users = readUsers();
@@ -128,29 +122,29 @@ export default function Login() {
     users.push(newUser);
     writeUsers(users);
 
-    // also create profile points store and persist
+    
     const profile = JSON.parse(localStorage.getItem("wm_profile") || "{}");
     profile.name = newUser.name;
     profile.points = profile.points || 0;
     localStorage.setItem("wm_profile", JSON.stringify(profile));
 
-    // auto-login after signup
+    
     await login({ username: newUser.name, remember });
     setLoading(false);
     navigate("/", { replace: true });
   }
 
-  // ---------- Mock Google Sign-In (demo) ----------
+  
   async function onGoogleSignIn() {
     setError("");
     setInfo("");
     setLoading(true);
-    // simulate OAuth redirect and response
+    
     await new Promise((r) => setTimeout(r, 800));
-    // Fake Google profile
+    
     const fakeEmail = `user${Math.floor(Math.random() * 1000)}@gmail.com`;
     const fakeName = fakeEmail.split("@")[0].replace(/\d+/, "");
-    // ensure user exists in demo user store
+    
     let users = readUsers();
     let user = findUserByEmail(fakeEmail);
     if (!user) {
@@ -158,19 +152,19 @@ export default function Login() {
       users.push(user);
       writeUsers(users);
     }
-    // set demo profile points if absent
+    
     const profile = JSON.parse(localStorage.getItem("wm_profile") || "{}");
     profile.name = user.name;
     profile.points = profile.points || 0;
     localStorage.setItem("wm_profile", JSON.stringify(profile));
 
-    // finish sign in
+    
     await login({ username: user.name, remember: true });
     setLoading(false);
     navigate(from, { replace: true });
   }
 
-  // ---------- Forgot password (mock) ----------
+  
   function onForgotPassword(e) {
     e.preventDefault();
     setForgotMsg("");
@@ -183,7 +177,7 @@ export default function Login() {
       setForgotMsg("No account found for that email.");
       return;
     }
-    // create a mock reset token and store it (demo)
+    
     const token = makeId() + "-" + Date.now().toString(36);
     const tokens = JSON.parse(localStorage.getItem("wm_reset_tokens") || "{}");
     tokens[forgotEmail.toLowerCase()] = token;
@@ -220,7 +214,7 @@ export default function Login() {
             </div>
           </div>
 
-          {/* ---------------- Sign In Form ---------------- */}
+          {}
           {mode === "signin" && (
             <form onSubmit={onSignIn} className="auth-form" aria-describedby="err" style={{ marginTop: 14 }}>
               <label>Email</label>
@@ -278,7 +272,7 @@ export default function Login() {
                     type="button"
                     className="btn btn-ghost"
                     onClick={() => {
-                      // quick demo sign in as guest
+                      
                       setLoading(true);
                       setTimeout(async () => {
                         await login({ username: "Guest", remember: false });
@@ -309,7 +303,7 @@ export default function Login() {
                     type="button"
                     className="btn btn-ghost"
                     onClick={() => {
-                      // quick "email magic link" mock
+                      
                       setInfo("Magic link: (demo) posted to console. Open console to see the link.");
                       console.info("Magic link (demo): http://localhost:3000/magic?token=demo-" + makeId());
                     }}
@@ -324,7 +318,7 @@ export default function Login() {
             </form>
           )}
 
-          {/* ---------------- Sign Up Form ---------------- */}
+          {}
           {mode === "signup" && (
             <form onSubmit={onSignUp} className="auth-form" aria-describedby="err" style={{ marginTop: 14 }}>
               <label>Display name</label>
@@ -350,7 +344,7 @@ export default function Login() {
           )}
         </div>
 
-        {/* ---------------- Right visual / help panel ---------------- */}
+        {}
         <div className="auth-visual card" style={{ padding: 20 }}>
           <h3>Why sign in?</h3>
           <ul style={{ marginTop: 8 }}>

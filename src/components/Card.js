@@ -1,4 +1,4 @@
-// components/Card.js
+
 import React from "react";
 
 export default function Card({ className = "", children }) {

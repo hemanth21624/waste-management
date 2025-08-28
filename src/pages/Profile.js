@@ -1,4 +1,4 @@
-// src/pages/Profile.js
+
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import Card from "../components/Card";
@@ -9,7 +9,7 @@ export default function Profile() {
   const [name, setName] = useState(user?.name || "");
   const [reports, setReports] = useState([]);
 
-  // Modal state for delete confirmation
+
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [reportToDelete, setReportToDelete] = useState(null);
 
@@ -24,7 +24,7 @@ export default function Profile() {
     profile.name = trimmed;
     localStorage.setItem("wm_profile", JSON.stringify(profile));
 
-    // update auth user (persist to wm_user if present)
+    
     if (user) {
       const newUser = { ...user, name: trimmed };
       setUser(newUser);

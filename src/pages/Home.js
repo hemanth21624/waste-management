@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import Card from "../components/Card";
@@ -11,30 +10,34 @@ export default function Home() {
   const [latest, setLatest] = useState([]);
 
   function animateTo(target, setter, key, startValue = 0) {
-    const start = startValue;
     const duration = 800;
     const startTime = performance.now();
     const step = (tme) => {
       const p = Math.min((tme - startTime) / duration, 1);
-      setter((prev) => ({ ...prev, [key]: Math.round(start + (target - start) * p) }));
+      setter((prev) => ({ ...prev, [key]: Math.round(startValue + (target - startValue) * p) }));
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   }
 
   useEffect(() => {
-    const reports = JSON.parse(localStorage.getItem("wm_reports") || "[]");
-    const totalReports = reports.length;
-    const resolved = reports.filter((r) => r.status === "resolved").length;
-    const volunteers = 1050;
+    const updateCounts = () => {
+      const reports = JSON.parse(localStorage.getItem("wm_reports") || "[]");
+      const totalReports = reports.length;
+      const resolved = reports.filter((r) => r.status === "resolved").length;
+      const volunteers = 1050;
 
-    animateTo(totalReports, setCounts, "reports", counts.reports || 0);
-    animateTo(resolved, setCounts, "resolved", counts.resolved || 0);
-    animateTo(volunteers, setCounts, "volunteers", counts.volunteers || 0);
+      animateTo(totalReports, setCounts, "reports", counts.reports || 0);
+      animateTo(resolved, setCounts, "resolved", counts.resolved || 0);
+      animateTo(volunteers, setCounts, "volunteers", counts.volunteers || 0);
 
-    setLatest(reports.slice(0, 5));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      setLatest(reports.slice(0, 5));
+    };
+
+    updateCounts();
+    window.addEventListener("storage", updateCounts);
+    return () => window.removeEventListener("storage", updateCounts);
+  }, [counts.reports, counts.resolved, counts.volunteers]);
 
   return (
     <section className="page container home-page">
@@ -69,7 +72,7 @@ export default function Home() {
             <div style={{ padding: 14, background: "linear-gradient(135deg,#42d392,#3aa3ff)", color: "#041424", fontWeight: 700 }}>
               {t("home_liveActivity")}
             </div>
-            <div style={{ padding: 12, background: "linear-gradient(180deg,#fff,#f8fbff)" }}>
+            <div style={{ padding: 12, background: "linear-gradient(180deg,#fff,#f8fbff)", maxHeight: 240, overflowY: "auto" }}>
               {latest.length === 0 && <div className="muted">{t("home_noReports")}</div>}
               {latest.map((r, i) => (
                 <div key={r.id || i} style={{ display: "flex", gap: 10, padding: "8px 0", alignItems: "center", borderBottom: "1px solid rgba(0,0,0,0.04)" }}>

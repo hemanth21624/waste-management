@@ -1,11 +1,11 @@
-// src/contexts/LanguageContext.js
+
 import React, { createContext, useEffect, useState, useContext } from "react";
 
 const LanguageContext = createContext();
 
 const TRANSLATIONS = {
   en: {
-    // NAV
+    
     nav_home: "Home",
     nav_report: "Report",
     nav_scoreboard: "Scoreboard",
@@ -17,7 +17,7 @@ const TRANSLATIONS = {
     nav_logout: "Logout",
     nav_theme: "Toggle theme",
 
-    // HOME
+    
     home_greeting: "Keep our city clean — together",
     home_lead: "Report issues, join local cleanups, and earn EcoPoints for every verified report.",
     home_reportNow: "Report Now",
@@ -31,7 +31,7 @@ const TRANSLATIONS = {
     home_yourImpact: "Your Impact",
     home_ecoPoints: "EcoPoints",
 
-    // REPORT
+    
     report_title: "Report an Issue",
     report_subtitle: "Capture a photo or record video and submit evidence (demo).",
     report_startCamera: "Start Camera",
@@ -48,26 +48,26 @@ const TRANSLATIONS = {
     report_submitSuccess: "Report submitted! +10 EcoPoints (demo)",
     report_geoUnavailable: "Geolocation unavailable or permission denied.",
 
-    // SCOREBOARD
+  
     scoreboard_title: "Community Leaderboard",
     scoreboard_lead: "Top helpers recognized by the community (demo).",
     scoreboard_contributor: "contributor",
 
-    // COMMUNITY
+    
     community_title: "Neighborhood Chat",
     community_lead: "Join your area's discussion to coordinate cleanups and share reports.",
     community_placeholder: "Message your community...",
     community_noMessages: "No messages yet — start the conversation!",
     community_send: "Send",
 
-    // VIOLATIONS
+    
     violations_title: "Reported Violations",
     violations_lead: "Photos are blurred by default to protect privacy; use responsibly.",
     violations_blur: "Blur sensitive media",
     violations_noMedia: "No media in demo. Submit reports on Report page to populate.",
     violations_view: "View",
 
-    // ABOUT
+    
     about_title: "About WasteWise",
     about_lead: "A civic-first project to help citizens report and reduce waste.",
     about_mission: "Our Mission",
@@ -75,7 +75,7 @@ const TRANSLATIONS = {
     about_team: "Team & Partners",
     about_future: "Future",
 
-    // LOGIN
+    
     login_welcomeBack: "Welcome back",
     login_createAccount: "Create an account",
     login_email: "Email",
@@ -92,7 +92,7 @@ const TRANSLATIONS = {
     login_magic: "Email magic link",
     login_demoNote: "This demo stores users in browser localStorage.",
 
-    // PROFILE
+    
     profile_title: "My Profile",
     profile_lead: "Manage your display name, view submitted reports, and track impact.",
     profile_save: "Save",
@@ -104,20 +104,20 @@ const TRANSLATIONS = {
     profile_delete: "Delete",
     profile_confirmDelete: "Are you sure you want to permanently delete this report? This action cannot be undone.",
 
-    // FOOTER
+  
     footer_copy: "© WasteWise",
     footer_about: "About",
     footer_report: "Report",
     footer_leaderboard: "Leaderboard",
 
-    // NOTFOUND
+    
     notfound_title: "404 — Page not found",
     notfound_lead: "We couldn't find the page you were looking for.",
     notfound_goHome: "Go to Home",
   },
 
   hi: {
-    // NAV
+    
     nav_home: "होम",
     nav_report: "रिपोर्ट",
     nav_scoreboard: "लीडरबोर्ड",
@@ -129,7 +129,7 @@ const TRANSLATIONS = {
     nav_logout: "लॉग आउट",
     nav_theme: "थीम बदलें",
 
-    // HOME
+    
     home_greeting: "हमारे शहर को साफ रखें — साथ मिलकर",
     home_lead: "समस्याओं की रिपोर्ट करें, स्थानीय साफ-सफाई में शामिल हों, और प्रत्येक सत्यापित रिपोर्ट के लिए EcoPoints कमाएं।",
     home_reportNow: "अभी रिपोर्ट करें",
@@ -143,7 +143,7 @@ const TRANSLATIONS = {
     home_yourImpact: "आपका प्रभाव",
     home_ecoPoints: "EcoPoints",
 
-    // REPORT
+    
     report_title: "समस्या रिपोर्ट करें",
     report_subtitle: "प्रमाण के रूप में फोटो लें या वीडियो रिकॉर्ड करें (डेमो)।",
     report_startCamera: "कैमरा चालू करें",
@@ -160,26 +160,26 @@ const TRANSLATIONS = {
     report_submitSuccess: "रिपोर्ट सबमिट हो गई! +10 EcoPoints (डेमो)",
     report_geoUnavailable: "जियोलोकेशन उपलब्ध नहीं है या अनुमति अस्वीकृत है।",
 
-    // SCOREBOARD
+    
     scoreboard_title: "समुदाय लीडरबोर्ड",
     scoreboard_lead: "समुदाय द्वारा मान्यता प्राप्त शीर्ष मददगार (डेमो)।",
     scoreboard_contributor: "योगदानकर्ता",
 
-    // COMMUNITY
+    
     community_title: "पड़ोस चैट",
     community_lead: "अपने क्षेत्र की चर्चा में शामिल हों और साफ़-सफाई का समन्वय करें।",
     community_placeholder: "समुदाय को संदेश भेजें...",
     community_noMessages: "अभी तक संदेश नहीं — बातचीत शुरू करें!",
     community_send: "भेजें",
 
-    // VIOLATIONS
+    
     violations_title: "रिपोर्ट की गई उल्लंघन",
     violations_lead: "गोपनीयता की रक्षा के लिए फ़ोटो डिफ़ॉल्ट रूप से ब्लर किए जाते हैं; जिम्मेदारी से उपयोग करें।",
     violations_blur: "संवेेदनशील मीडिया ब्लर करें",
     violations_noMedia: "डेमो में कोई मीडिया नहीं। रिपोर्ट पृष्ठ पर रिपोर्ट सबमिट करें।",
     violations_view: "देखें",
 
-    // ABOUT
+    
     about_title: "WasteWise के बारे में",
     about_lead: "नागरिक-केंद्रित परियोजना जो नागरिकों को रिपोर्ट करने और कचरा कम करने में मदद करती है।",
     about_mission: "हमारा मिशन",
@@ -187,7 +187,7 @@ const TRANSLATIONS = {
     about_team: "टीम और भागीदार",
     about_future: "भविष्य",
 
-    // LOGIN
+    
     login_welcomeBack: "वापसी पर स्वागत है",
     login_createAccount: "खाता बनाएं",
     login_email: "ईमेल",
@@ -204,7 +204,7 @@ const TRANSLATIONS = {
     login_magic: "ईमेल मैजिक लिंक",
     login_demoNote: "यह डेमो ब्राउज़र के localStorage में उपयोगकर्ताओं को संग्रहीत करता है।",
 
-    // PROFILE
+    
     profile_title: "मेरी प्रोफ़ाइल",
     profile_lead: "अपना प्रदर्शन नाम प्रबंधित करें, सबमिट किए गए रिपोर्ट देखें और प्रभाव ट्रैक करें।",
     profile_save: "सहेजें",
@@ -216,20 +216,20 @@ const TRANSLATIONS = {
     profile_delete: "हटाएँ",
     profile_confirmDelete: "क्या आप निश्चित रूप से इस रिपोर्ट को स्थायी रूप से हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
 
-    // FOOTER
+    
     footer_copy: "© WasteWise",
     footer_about: "हमारे बारे में",
     footer_report: "रिपोर्ट",
     footer_leaderboard: "लीडरबोर्ड",
 
-    // NOTFOUND
+    
     notfound_title: "404 — पृष्ठ नहीं मिला",
     notfound_lead: "हम उस पृष्ठ को नहीं ढूंढ पाए जो आप खोज रहे थे।",
     notfound_goHome: "होम पर जाएँ",
   },
 
   kn: {
-    // NAV
+    
     nav_home: "ಹೋಮ್",
     nav_report: "ವರದಿ",
     nav_scoreboard: "ಲೀಡರ್‌ಬೋರ್ಡ್",
@@ -241,7 +241,7 @@ const TRANSLATIONS = {
     nav_logout: "ಲಾಗ್ ಔಟ್",
     nav_theme: "ಥೀಮ್ ಬದಲಿಸಿ",
 
-    // HOME
+  
     home_greeting: "ನಮ್ಮ ನಗರವನ್ನು ಸ್ವಚ್ಛವಾಗಿರಿಸಿ — ಒಟ್ಟಾಗಿ",
     home_lead: "समಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ, ಸ್ಥಳೀಯ ಸ್ವಚ್ಛತಾ ಕಾರ್ಯಕ್ರಮಗಳಲ್ಲಿ ಸೇರಿ, ಮತ್ತು EcoPoints ಗಳಿಸಿ.",
     home_reportNow: "ರಿಪೋರ್ಟ್ ಮಾಡಲು",
@@ -255,7 +255,7 @@ const TRANSLATIONS = {
     home_yourImpact: "ನಿಮ್ಮ ಪ್ರಭಾವ",
     home_ecoPoints: "EcoPoints",
 
-    // REPORT
+    
     report_title: "ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿ",
     report_subtitle: "ಸಾಕ್ಷ್ಯವಾಗಿ ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ ಅಥವಾ ವೀಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಿ (ಡೆಮೊ).",
     report_startCamera: "ಕ್ಯಾಮೆರಾ ಪ್ರಾರಂಭಿಸಿ",
@@ -272,26 +272,26 @@ const TRANSLATIONS = {
     report_submitSuccess: "ವರದಿ ಸಲ್ಲಿಸಲಾಗಿದೆ! +10 EcoPoints (ಡೆಮೊ)",
     report_geoUnavailable: "ಸ್ಥಳೀಯ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ ಅಥವಾ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ.",
 
-    // SCOREBOARD
+  
     scoreboard_title: "ಸಮುದಾಯ ಲೀಡರ್‌ಬೋರ್ಡ್",
     scoreboard_lead: "ಸಮುದಾಯದ ಹಿರಿಯರು (ಡೆಮೊ).",
     scoreboard_contributor: "ದಾನಿ",
 
-    // COMMUNITY
+  
     community_title: "ನೆರೆಹೊರೆಯ ಚಾಟ್",
     community_lead: "ನಿಮ್ಮ ಪ್ರದೇಶದ ಚರ್ಚೆಯಲ್ಲಿ ಸೇರಿ ಸ್ವಚ್ಛತಾ ಕಾರ್ಯಗಳನ್ನು ಸಂಯೋಜಿಸಿ.",
     community_placeholder: "ನಿಮ್ಮ ಸಮುದಾಯಕ್ಕೆ ಸಂದೇಶ ಬರೆಹ...",
     community_noMessages: "ಇನ್ನೂ ಸಂದೇಶಗಳಿಲ್ಲ — ಚರ್ಚೆ ಆರಂಭಿಸಿ!",
     community_send: "ಕಳುಹಿಸು",
 
-    // VIOLATIONS
+
     violations_title: "ವರದಿ ಮಾಡಿಕೊಂಡ ಉಲ್ಲಂಘನೆಗಳು",
     violations_lead: "ಗೌಪ್ಯತೆಯನ್ನು ಕಾಪಾಡಲು ಚಿತ್ರಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ತೋರಿಸಲಾಗುತ್ತದೆ; ಜವಾಬ್ದಾರಿಯಾಗಿ ಬಳಸಿರಿರಿ.",
     violations_blur: "ಗೋಚರ ತಯಾರಿಗೆ ಮಾಧ್ಯಮವನ್ನು ಬ್ಲರ್ ಮಾಡಿ",
     violations_noMedia: "ಡೆಮೊದಲ್ಲಿ ಯಾವುದೇ ಮಾಧ್ಯಮವಿಲ್ಲ. ವರದಿ ಪುಟದಲ್ಲಿ ವರದಿ ಸಲ್ಲಿಸಿ.",
     violations_view: "ನೋಡಲು",
 
-    // ABOUT
+    
     about_title: "WasteWise ಬಗ್ಗೆ",
     about_lead: "ನಗರವನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸಲು ನಾಗরিক-ಪ್ರಥಮ ಯೋಜನೆ.",
     about_mission: "ನಮ್ಮ ಗುರಿ",
@@ -299,7 +299,7 @@ const TRANSLATIONS = {
     about_team: "ಟೀಮ್ ಮತ್ತು ಪಾಲುದಾರರು",
     about_future: "ಭವಿಷ್ಯ",
 
-    // LOGIN
+    
     login_welcomeBack: "ಮீಳಿ ಬರಿದ್ದಕ್ಕೆ ಸುಸ್ವಾಗತ",
     login_createAccount: "ಖಾತೆಯನ್ನು ರಚಿಸಿ",
     login_email: "ಇಮೇಲ್",
@@ -316,7 +316,7 @@ const TRANSLATIONS = {
     login_magic: "ಇಮೇಲ್ ಮಾಯಾಜಾಲ ಲಿಂಕ್",
     login_demoNote: "ಡೆಮೊ ಈ ಬ್ರೌಸರ್ localStorage ನಲ್ಲಿ ಬಳಕೆದಾರರನ್ನು ಸಂರಕ್ಷಿಸುತ್ತದೆ.",
 
-    // PROFILE
+  
     profile_title: "ನನ್ನ ಪ್ರೊಫೈಲ್",
     profile_lead: "ನಿಮ್ಮ ಪ್ರದರ್ಶನ ಹೆಸರನ್ನು ನಿರ್ವಹಿಸಿ, ಸಲ್ಲಿಸಿದ ವರದಿಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಪರಿಣಾಮವನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ.",
     profile_save: "ಉಳಿಸಿ",
@@ -328,13 +328,13 @@ const TRANSLATIONS = {
     profile_delete: "ಅಳಿಸಿ",
     profile_confirmDelete: "ಈ ವರದಿಯನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಲು ನೀವು ಖಾತ್ರಿಯಾಗಿದ್ದೀರಾ? ಈ ಚಟುವಟಿಕೆಯನ್ನು ಹಿಂದಕ್ಕೆ ಮಾಡಲಾಗುವುದಿಲ್ಲ.",
 
-    // FOOTER
+  
     footer_copy: "© WasteWise",
     footer_about: "ಬಗ್ಗೆ",
     footer_report: "ವರದಿ",
     footer_leaderboard: "ಲೀಡರ್‌ಬೋರ್ಡ್",
 
-    // NOTFOUND
+  
     notfound_title: "404 — ಪುಟ ದೊರಕಲಿಲ್ಲ",
     notfound_lead: "ನಾವು ನೀವು ಹುಡುಕುತ್ತಿದ್ದ ಪುಟವನ್ನು ಕಂಡುಹಿಡಿಯಲಿಲ್ಲ.",
     notfound_goHome: "ಮನೆಗೆ ಹೋಗಿ",

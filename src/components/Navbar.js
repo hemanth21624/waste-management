@@ -1,4 +1,4 @@
-// src/components/Navbar.js
+
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
@@ -20,7 +20,7 @@ export default function Navbar({ onToggleTheme, isDark }) {
         <div className="brand">
           <div className="logo" aria-hidden>♻</div>
           <div>
-            <div className="brand-title">WasteWise</div>
+            <div className="brand-title">WasteWatch</div>
             <div className="brand-sub">{t("home_lead")}</div>
           </div>
         </div>

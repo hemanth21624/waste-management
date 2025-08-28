@@ -1,4 +1,3 @@
-// src/pages/Report.js
 import React, { useRef, useState, useEffect } from "react";
 import { useLang } from "../contexts/LanguageContext";
 import Modal from "../components/Modal";

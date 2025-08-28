@@ -1,4 +1,4 @@
-// src/pages/About.js
+
 import React from "react";
 import Card from "../components/Card";
 import { useLang } from "../contexts/LanguageContext";
@@ -14,7 +14,7 @@ export default function About() {
         <p className="muted">{t("about_lead")}</p>
       </header>
 
-      {/* About Information Grid */}
+      {}
       <div className="about-grid">
         <Card className="about-card">
           <h3>{t("about_mission")}</h3>
@@ -42,7 +42,7 @@ export default function About() {
         </Card>
       </div>
 
-      {/* Contact Section */}
+      {}
       <div className="contact-section" style={{ marginTop: "2rem" }}>
         <h3 style={{ marginBottom: "1rem" }}>📬 {t("about_contact") || "Contact Us"}</h3>
 

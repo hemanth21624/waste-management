@@ -1,4 +1,4 @@
-// src/pages/RecordReport.js
+
 import React, { useRef, useState } from "react";
 
 export default function RecordReport() {
@@ -10,7 +10,7 @@ export default function RecordReport() {
   const chunksRef = useRef([]);
   const [mimeType, setMimeType] = useState("video/webm");
 
-  // Start camera
+  
   async function startCamera() {
     try {
       const s = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
@@ -24,11 +24,11 @@ export default function RecordReport() {
     }
   }
 
-  // Start recording
+  
   function startRecording() {
     if (!stream) return;
 
-    // Prefer MP4 (Safari/iOS), fallback WebM
+    
     let options = { mimeType: "video/mp4;codecs=avc1.42E01E,mp4a.40.2" };
     if (!MediaRecorder.isTypeSupported(options.mimeType)) {
       options = { mimeType: "video/webm;codecs=vp8,opus" };
@@ -51,12 +51,12 @@ export default function RecordReport() {
       const url = URL.createObjectURL(blob);
       setVideoURL(url);
 
-      // Save report to localStorage
+      
       const reports = JSON.parse(localStorage.getItem("wm_reports") || "[]");
       const newReport = {
         id: Date.now(),
         createdAt: new Date().toISOString(),
-        video: url, // store blob URL (could also store base64)
+        video: url, 
         mimeType: options.mimeType,
         status: "Submitted",
       };
@@ -68,7 +68,7 @@ export default function RecordReport() {
     setRecording(true);
   }
 
-  // Stop recording
+  
   function stopRecording() {
     if (mediaRecorderRef.current && recording) {
       mediaRecorderRef.current.stop();

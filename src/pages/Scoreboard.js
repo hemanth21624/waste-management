@@ -1,4 +1,4 @@
-// src/pages/Scoreboard.js
+
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import { useLang } from "../contexts/LanguageContext";

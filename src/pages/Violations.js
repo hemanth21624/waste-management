@@ -1,4 +1,4 @@
-// src/pages/Violations.js
+
 import React, { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import { useLang } from "../contexts/LanguageContext";
@@ -16,7 +16,7 @@ export default function Violations() {
     setReports(Array.isArray(stored) ? stored : []);
   }, []);
 
-  // Convert base64 data URL → Blob
+  
   function dataURLtoBlob(dataURL) {
     try {
       const [meta, base64] = dataURL.split(",");
@@ -32,7 +32,7 @@ export default function Violations() {
     }
   }
 
-  // Generate object URLs for videos
+  
   useEffect(() => {
     const newMap = {};
     const newErr = {};
@@ -66,7 +66,7 @@ export default function Violations() {
     };
   }, [reports]);
 
-  // ✅ Delete function
+
   function handleDelete(id) {
     if (!window.confirm("Are you sure you want to delete this report?")) return;
 
@@ -74,7 +74,7 @@ export default function Violations() {
     setReports(newReports);
     localStorage.setItem("wm_reports", JSON.stringify(newReports));
 
-    // cleanup
+    
     setVideoUrls((prev) => {
       const copy = { ...prev };
       delete copy[id];

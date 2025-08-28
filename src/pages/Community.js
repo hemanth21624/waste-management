@@ -1,11 +1,11 @@
-// src/pages/Community.js
+
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useLang } from "../contexts/LanguageContext";
 
 export default function Community() {
   const { t, lang, setLang } = useLang();
 
-  // room/pincode for grouping neighborhood chats
+  
   const [room, setRoom] = useState(() => localStorage.getItem("wm_room") || "560001");
   const [name, setName] = useState(() => {
     try {
@@ -23,7 +23,7 @@ export default function Community() {
 
   const storageKey = useCallback((r) => `wm_chat_${r}`, []);
 
-  // load messages for current room
+  
   const load = useCallback(() => {
     setLoading(true);
     try {
@@ -33,40 +33,40 @@ export default function Community() {
       setMessages([]);
     } finally {
       setLoading(false);
-      // scroll after a small delay so DOM renders first
+      
       setTimeout(() => {
         if (boxRef.current) boxRef.current.scrollTop = boxRef.current.scrollHeight;
       }, 80);
     }
   }, [room, storageKey]);
 
-  // initial load & when room changes
+  
   useEffect(() => {
     load();
   }, [load]);
 
-  // save messages whenever they change
+  
   useEffect(() => {
     try {
       localStorage.setItem(storageKey(room), JSON.stringify(messages));
     } catch {
-      // ignore localStorage failures
+    
     }
   }, [messages, room, storageKey]);
 
-  // save room to localStorage on change
+  
   useEffect(() => {
     localStorage.setItem("wm_room", room);
   }, [room]);
 
-  // save display name to profile when it changes
+  
   useEffect(() => {
     try {
       const profile = JSON.parse(localStorage.getItem("wm_profile") || "{}");
       profile.name = name;
       localStorage.setItem("wm_profile", JSON.stringify(profile));
     } catch {
-      // ignore
+      
     }
   }, [name]);
 
@@ -77,7 +77,7 @@ export default function Community() {
     const newMsg = { id: Date.now(), author: name || "Anonymous", text: trimmed, ts: Date.now() };
     setMessages((prev) => [newMsg, ...prev]);
     setText("");
-    // scroll to top (newest first) after render
+    
     setTimeout(() => {
       if (boxRef.current) boxRef.current.scrollTop = 0;
     }, 50);
@@ -85,8 +85,7 @@ export default function Community() {
 
   function clearRoomMessages() {
     if (!window.confirm) {
-      // if confirm is disabled by linter rules in your project, you can remove this branch
-      // or implement a modal. For now use confirm for quick demo.
+      
     }
     if (window.confirm("Clear all messages for this room?")) {
       setMessages([]);

@@ -1,4 +1,4 @@
-// src/contexts/AuthContext.js
+
 import React, { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
@@ -17,9 +17,9 @@ export function AuthProvider({ children }) {
     else localStorage.removeItem("wm_user");
   }, [user]);
 
-  // Mock login: accept any username; you can add password checks later
+  
   const login = async ({ username, remember }) => {
-    // simulate server delay
+    
     await new Promise((r) => setTimeout(r, 400));
     const profile = {
       name: username,
@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     setUser(null);
-    // keep profile points but remove the auth user
+  
     localStorage.removeItem("wm_user");
   };
 
